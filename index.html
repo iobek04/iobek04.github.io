@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Ipek Naz Obek — PreDoctoral Researcher at the Computation, Learning, and Development Lab." />
+  <title>Ipek Naz Obek</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="site-title" href="#home">
+        Ipek Naz Obek <span>/ PreDoc @ Computation, Learning, and Development Lab</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#presentations">Presentations</a>
+        <a href="Ipek_Obek_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="page-shell">
+    <aside class="profile-column">
+      <div class="portrait-wrap">
+        <img class="portrait" src="profile.jpg" alt="Portrait of Ipek Naz Obek"
+          onerror="this.style.display='none'; document.getElementById('portrait-fallback').style.display='grid';" />
+        <div id="portrait-fallback" class="portrait-fallback" aria-label="Ipek Naz Obek initials">
+          IO
+        </div>
+      </div>
+
+      <h1>Ipek Naz Obek</h1>
+      <p class="role">PreDoctoral Researcher</p>
+      <p class="affiliation">Computation, Learning, and Development Lab</p>
+
+      <div class="link-list">
+        <a href="https://bucoldlab.org/" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">↗</span>
+          Computation, Learning & Development Lab
+        </a>
+        <a href="mailto:ipeknazobek@gmail.com">
+          <span aria-hidden="true">✉</span>
+          Email
+        </a>
+
+        <a href="https://www.linkedin.com/in/ipekobek" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">in</span>
+          LinkedIn
+        </a>
+
+        <a href="https://github.com/iobek" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">⌘</span>
+          GitHub
+        </a>
+      </div>
+    </aside>
+
+    <section class="content-column">
+      <section class="intro-section">
+        <p>
+          Hi, I'm Ipek. I'm interested in building models of thinking.
+        </p>
+        <p>
+          I'm currently a predoctoral researcher and lab manager at Boston University’s
+          <strong>Computation, Learning, and Development Lab</strong>. I recently graduated
+          from the University of Pennsylvania, where I studied Cognitive Science with a
+          concentration in Computation and Cognition and completed minors in Data Science
+          and Computational Neuroscience.
+        </p>
+
+        <p>
+          I am broadly interested in how people learn from experience, make decisions, and
+          form judgments, as well as how these processes can be formalized through
+          computational models of the mind. I am especially interested in learning progress,
+          exploration, curiosity, value-guided learning, and the relationship between human
+          learning and artificial intelligence.
+        </p>
+
+        <p>
+          Previously, I worked with
+          <strong>Alison Gopnik</strong> and <strong>Annya Dahmani</strong> at the
+          Cognitive Development and Learning Lab at UC Berkeley. There, I studied how
+          children and adults evaluate their own learning progress and decide what to explore
+          next. My senior honors thesis compared human judgments about learning progress with
+          computational learning models and examined how goals shape exploration.
+          You can watch my
+          <a href="https://drive.google.com/file/d/1djJ0Nvke9EetUGytxKk1bXHeb_eAojES/view" target="_blank"
+            rel="noopener noreferrer">
+            senior thesis presentation
+          </a>.
+        </p>
+
+        <p>
+          I also worked at Penn’s Center for Neuroengineering and Therapeutics, where I used
+          neuroimaging and computational tools to study the relationship between traumatic
+          brain injury lesions and epilepsy.
+        </p>
+      </section>
+
+
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Ipek Naz Obek</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
