@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submarine Fishing Task — Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <section id="screen-intro" class="screen active">
+      <div class="card">
+        <h1>🐙 Submarine Fishing Task</h1>
+        <p class="tag">Interactive demo — a short taste of the real study</p>
+        <p>
+          Each trial, three creatures show up with different amounts. Click one to
+          add it to your net. But careful — if you switch to a different creature
+          than the one you've been catching, your net empties and starts over with
+          the new one.
+        </p>
+        <p class="muted">This demo ends as soon as you fill one net. No data is recorded.</p>
+        <button class="btn primary" id="start-btn">Start demo</button>
+      </div>
+    </section>
+
+    <section id="screen-game" class="screen">
+      <div class="window-wrap">
+        <img class="murky" src="images/murky_water.png" alt="">
+
+        <div class="topbar">
+          <div class="money-row"><img src="images/money_bag.png" alt=""><span id="money-count">0</span></div>
+          <div class="trial-row">Trial <span id="trial-num">1</span></div>
+        </div>
+
+        <div class="creature-rows" id="creature-rows"></div>
+
+        <img class="frame" src="images/submarine_window_horz.png" alt="">
+      </div>
+
+      <div class="net-row">
+        <img class="net-icon" id="net-icon" src="images/fishing_net.png" alt="">
+        <div class="net-outer"><div class="net-fill" id="net-fill"></div></div>
+      </div>
+
+      <p class="hint" id="hint">Click a creature to add it to your net.</p>
+    </section>
+
+    <section id="screen-end" class="screen">
+      <div class="card">
+        <h1>Net full! 🎉</h1>
+        <p>It took <b id="final-trials">0</b> trials to fill the net.</p>
+        <p class="muted">
+          This is a short, simplified preview built for a portfolio page — it isn't the
+          full study. The real task runs hundreds of trials across high- and
+          low-volatility blocks to study how people track changing value over time.
+        </p>
+        <button class="btn" id="restart-btn">Play again</button>
+      </div>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

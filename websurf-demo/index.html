@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web-Surf Task — Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <section id="screen-intro" class="screen active">
+      <div class="card">
+        <h1>📺 Web-Surf Task</h1>
+        <p class="tag">Interactive demo — a short taste of the real study</p>
+        <p>
+          You'll browse a few video galleries. Before each video plays, you're told
+          how long it will take to load. You decide: is it worth the wait, or do you
+          skip to a different gallery? Sometimes the wait gets longer once you've
+          already started — do you keep waiting, or cut your losses?
+        </p>
+        <p class="muted">This demo runs 3 quick rounds. No data is recorded.</p>
+        <button class="btn primary" id="start-btn">Start demo</button>
+      </div>
+    </section>
+
+    <section id="screen-offer" class="screen">
+      <div class="hud"><div>Gallery <span id="round-num">1</span> / <span id="round-total">3</span></div></div>
+      <div class="card offer-card">
+        <img id="offer-img" class="offer-img" src="" alt="">
+        <div class="offer-info">
+          <div class="offer-category" id="offer-category"></div>
+          <div class="offer-wait">This video will take <b id="offer-secs"></b> seconds to load.</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="skip-btn">Skip gallery</button>
+        <button class="btn primary" id="load-btn">Load video</button>
+      </div>
+    </section>
+
+    <section id="screen-wait" class="screen">
+      <div class="hud"><div>Gallery <span id="round-num-2"></span> / <span id="round-total-2"></span></div></div>
+      <div class="card">
+        <p class="offer-wait">Loading <span id="wait-category"></span> video&hellip;</p>
+        <div class="progress-outer"><div class="progress-fill" id="progress-fill"></div></div>
+        <p class="muted"><span id="elapsed">0</span>s elapsed</p>
+        <div id="revision-toast" class="revision-toast"></div>
+        <button class="btn stop-btn" id="stop-btn">Stop waiting</button>
+      </div>
+    </section>
+
+    <section id="screen-video" class="screen">
+      <div class="card video-card">
+        <video id="video-el" playsinline muted></video>
+        <button class="btn primary tap-play-btn" id="tap-play-btn">▶ Tap to play</button>
+      </div>
+    </section>
+
+    <section id="screen-rating" class="screen">
+      <div class="card">
+        <h2>How would you rate that video?</h2>
+        <div class="stars" id="stars">
+          <span data-v="1">★</span>
+          <span data-v="2">★</span>
+          <span data-v="3">★</span>
+          <span data-v="4">★</span>
+          <span data-v="5">★</span>
+        </div>
+        <button class="btn primary" id="rating-next-btn">Continue</button>
+      </div>
+    </section>
+
+    <section id="screen-end" class="screen">
+      <div class="card">
+        <h1>Demo complete</h1>
+        <p id="end-summary"></p>
+        <p class="muted">
+          This is a short, simplified preview built for a portfolio page — it isn't the
+          full study. The full task is much longer and is designed to study how people
+          respond to sunk costs (time already invested) when deciding whether to
+          persist or give up.
+        </p>
+        <button class="btn" id="restart-btn">Play again</button>
+      </div>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
