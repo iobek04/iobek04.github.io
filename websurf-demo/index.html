@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Web-Surf Task — Demo</title>
+<title>Web-Surf Task: Demo</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,64 +11,79 @@
 
     <section id="screen-intro" class="screen active">
       <div class="card">
-        <h1>📺 Web-Surf Task</h1>
-        <p class="tag">Interactive demo — a short taste of the real study</p>
+        <h1>Web-Surf Task</h1>
+        <p class="tag">Try a short demo of the study</p>
         <p>
-          You'll browse a few video galleries. Before each video plays, you're told
-          how long it will take to load. You decide: is it worth the wait, or do you
-          skip to a different gallery? Sometimes the wait gets longer once you've
-          already started — do you keep waiting, or cut your losses?
+          You will browse a few video galleries. Each gallery offers a video and
+          tells you how long it will take to load. You can load the video and wait,
+          or skip to the next gallery. Sometimes the wait gets longer after you have
+          started, and you can stop waiting at any time.
         </p>
-        <p class="muted">This demo runs 3 quick rounds. No data is recorded.</p>
+        <p class="muted">This demo has 4 offers, one from each gallery, with shorter waits than the full study. No data is recorded.</p>
         <button class="btn primary" id="start-btn">Start demo</button>
       </div>
     </section>
 
-    <section id="screen-offer" class="screen">
-      <div class="hud"><div>Gallery <span id="round-num">1</span> / <span id="round-total">3</span></div></div>
-      <div class="card offer-card">
-        <img id="offer-img" class="offer-img" src="" alt="">
-        <div class="offer-info">
-          <div class="offer-category" id="offer-category"></div>
-          <div class="offer-wait">This video will take <b id="offer-secs"></b> seconds to load.</div>
-        </div>
-      </div>
-      <div class="btn-row">
-        <button class="btn" id="skip-btn">Skip gallery</button>
-        <button class="btn primary" id="load-btn">Load video</button>
+    <section id="screen-travel" class="screen task-screen">
+      <div class="travel-lines">
+        <div class="travel-line">Selecting video…</div>
+        <div class="travel-line">Video selected.</div>
+        <div class="travel-line">Generating loading time…</div>
+        <div class="travel-line">Offer ready.</div>
       </div>
     </section>
 
-    <section id="screen-wait" class="screen">
-      <div class="hud"><div>Gallery <span id="round-num-2"></span> / <span id="round-total-2"></span></div></div>
-      <div class="card">
-        <p class="offer-wait">Loading <span id="wait-category"></span> video&hellip;</p>
+    <section id="screen-offer" class="screen task-screen">
+      <div class="offer-title">Offer</div>
+      <div class="offer-wait">This video will take <b id="offer-secs"></b> seconds to load.</div>
+      <img id="offer-img" class="offer-img" src="" alt="">
+      <div class="offer-buttons">
+        <button id="skip-btn" class="skip-btn" type="button">
+          <span>SKIP GALLERY</span>
+          <svg viewBox="0 0 100 100" width="68" height="68" aria-hidden="true">
+            <rect x="8" y="8" width="84" height="84" rx="5" fill="none" stroke="#111" stroke-width="5" />
+            <path d="M 37 34 L 37 60 Q 37 80 50 80 Q 63 80 63 60 L 63 34" fill="none" stroke="#111"
+              stroke-width="6" stroke-linecap="square" />
+            <polygon points="63,18 55,34 71,34" fill="#111" />
+          </svg>
+        </button>
+        <button id="load-btn" class="load-btn" type="button">
+          <img src="img/loadVid1.png" alt="Load video">
+        </button>
+      </div>
+    </section>
+
+    <section id="screen-wait" class="screen task-screen">
+      <p class="wait-line">This video will take <b id="total-secs"></b> seconds to load.</p>
+      <img id="wait-img" class="wait-img" src="" alt="">
+      <div class="progress-wrap">
         <div class="progress-outer"><div class="progress-fill" id="progress-fill"></div></div>
-        <p class="muted"><span id="elapsed">0</span>s elapsed</p>
-        <div id="revision-toast" class="revision-toast"></div>
-        <button class="btn stop-btn" id="stop-btn">Stop waiting</button>
+        <div class="time-legend"><span id="elapsed">0</span>s elapsed</div>
       </div>
+      <div class="stop-wrap">
+        <button class="stop-btn" id="stop-btn" type="button" aria-label="Stop waiting">
+          <img src="img/stopWaiting.png" alt="">
+        </button>
+        <div class="stop-hint">Press <b>Space</b> to stop waiting</div>
+      </div>
+      <div id="rev-toast" class="rev-toast"><div id="rev-toast-text" class="rev-toast-box"></div></div>
     </section>
 
-    <section id="screen-video" class="screen">
-      <div class="card video-card">
+    <section id="screen-video" class="screen task-screen">
+      <div class="video-card">
         <video id="video-el" playsinline muted></video>
-        <button class="btn primary tap-play-btn" id="tap-play-btn">▶ Tap to play</button>
+        <button class="btn primary tap-play-btn" id="tap-play-btn">Tap to play</button>
       </div>
     </section>
 
-    <section id="screen-rating" class="screen">
-      <div class="card">
-        <h2>How would you rate that video?</h2>
-        <div class="stars" id="stars">
-          <span data-v="1">★</span>
-          <span data-v="2">★</span>
-          <span data-v="3">★</span>
-          <span data-v="4">★</span>
-          <span data-v="5">★</span>
-        </div>
-        <button class="btn primary" id="rating-next-btn">Continue</button>
+    <section id="screen-rating" class="screen task-screen">
+      <div class="rating-prompt">How much did you enjoy that video?</div>
+      <div class="rating-row">
+        <img class="star-img" src="img/oneStar1.png" alt="1 star (lowest)">
+        <input type="range" id="rating-slider" min="0" max="100" step="1" value="50">
+        <img class="star-img" src="img/fiveStar1.png" alt="5 stars (highest)">
       </div>
+      <button class="btn primary" id="rating-next-btn" disabled>Continue</button>
     </section>
 
     <section id="screen-end" class="screen">
@@ -76,9 +91,8 @@
         <h1>Demo complete</h1>
         <p id="end-summary"></p>
         <p class="muted">
-          This is a short, simplified preview built for a portfolio page — it isn't the
-          full study. The full task is much longer and is designed to study how people
-          respond to sunk costs (time already invested) when deciding whether to
+          This is a short, simplified version of the task. The full study is much
+          longer and looks at how time already invested shapes the decision to
           persist or give up.
         </p>
         <button class="btn" id="restart-btn">Play again</button>

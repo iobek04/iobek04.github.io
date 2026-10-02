@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Submarine Fishing Task — Demo</title>
+<title>Submarine Fishing Task: Demo</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,49 +11,57 @@
 
     <section id="screen-intro" class="screen active">
       <div class="card">
-        <h1>🐙 Submarine Fishing Task</h1>
-        <p class="tag">Interactive demo — a short taste of the real study</p>
+        <h1>Submarine Fishing Task</h1>
+        <p class="tag">Try a short demo of the study</p>
         <p>
-          Each trial, three creatures show up with different amounts. Click one to
-          add it to your net. But careful — if you switch to a different creature
-          than the one you've been catching, your net empties and starts over with
-          the new one.
+          On each turn, three sea creatures flash briefly on the screen, and you click
+          where you remember each one appearing. Then you choose which creature to
+          catch. The bars show how much of each is available: green adds to your net,
+          red takes away from it. A net can only hold one type of creature, so if you
+          switch to a different one, the net empties and starts over.
         </p>
-        <p class="muted">This demo ends as soon as you fill one net. No data is recorded.</p>
+        <p class="muted">This demo ends when you fill one net or run out of turns. No data is recorded.</p>
         <button class="btn primary" id="start-btn">Start demo</button>
       </div>
     </section>
 
     <section id="screen-game" class="screen">
-      <div class="window-wrap">
-        <img class="murky" src="images/murky_water.png" alt="">
+      <div class="stage" id="stage">
+        <img class="layer" src="images/underwater.jpg" alt="">
+        <img class="layer murky" id="murky" src="images/murky_water.png" alt="">
+
+        <div id="ready" class="ready">
+          <div class="ready-text">Ready to find the creatures?</div>
+          <button class="go-btn" id="go-btn" type="button">Go</button>
+        </div>
+
+        <div id="items"></div>
+
+        <img class="layer frame" src="images/submarine_window_horz.png" alt="">
 
         <div class="topbar">
           <div class="money-row"><img src="images/money_bag.png" alt=""><span id="money-count">0</span></div>
-          <div class="trial-row">Trial <span id="trial-num">1</span></div>
+          <div class="trial-row" id="trial-count"></div>
         </div>
 
-        <div class="creature-rows" id="creature-rows"></div>
+        <img class="probe" id="probe" src="" alt="">
 
-        <img class="frame" src="images/submarine_window_horz.png" alt="">
+        <div class="net-zone" id="net-zone">
+          <img class="net-icon" id="net-icon" src="images/fishing_net.png" alt="">
+          <div class="net-goal" id="net-goal"><div class="net-fill" id="net-fill"></div></div>
+        </div>
       </div>
-
-      <div class="net-row">
-        <img class="net-icon" id="net-icon" src="images/fishing_net.png" alt="">
-        <div class="net-outer"><div class="net-fill" id="net-fill"></div></div>
-      </div>
-
-      <p class="hint" id="hint">Click a creature to add it to your net.</p>
+      <p class="hint" id="hint"></p>
     </section>
 
     <section id="screen-end" class="screen">
       <div class="card">
-        <h1>Net full! 🎉</h1>
-        <p>It took <b id="final-trials">0</b> trials to fill the net.</p>
+        <h1>Demo complete</h1>
+        <p id="end-summary"></p>
         <p class="muted">
-          This is a short, simplified preview built for a portfolio page — it isn't the
-          full study. The real task runs hundreds of trials across high- and
-          low-volatility blocks to study how people track changing value over time.
+          This is a short, simplified version of the task. The full study runs
+          hundreds of trials and looks at how people decide when to persist with a
+          goal and when to switch.
         </p>
         <button class="btn" id="restart-btn">Play again</button>
       </div>

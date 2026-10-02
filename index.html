@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -18,12 +18,11 @@
   <header class="site-header">
     <div class="nav-wrap">
       <a class="site-title" href="#home">
-        Ipek Naz Obek <span>/ PreDoc @ Computation, Learning, and Development Lab</span>
+        Ipek Naz Obek
       </a>
 
       <nav aria-label="Primary navigation">
-        <a href="#research">Research</a>
-        <a href="#presentations">Presentations</a>
+        <a href="research.html">Research</a>
         <a href="Ipek_Obek_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
       </nav>
     </div>
@@ -32,7 +31,7 @@
   <main id="home" class="page-shell">
     <aside class="profile-column">
       <div class="portrait-wrap">
-        <img class="portrait" src="profile.jpg" alt="Portrait of Ipek Naz Obek"
+        <img class="portrait" src="profile-poster.jpg" alt="Ipek Naz Obek in glasses, standing in front of a research poster"
           onerror="this.style.display='none'; document.getElementById('portrait-fallback').style.display='grid';" />
         <div id="portrait-fallback" class="portrait-fallback" aria-label="Ipek Naz Obek initials">
           IO
@@ -66,81 +65,81 @@
     </aside>
 
     <section class="content-column">
-      <section class="intro-section">
-        <p>
-          Hi, I'm Ipek. I'm interested in building models of thinking.
+      <div class="name-picker">
+        <p class="hello">Hi, I'm</p>
+        <div class="name-tabs" role="tablist" aria-label="Which name?">
+          <button role="tab" id="tab-ipek" aria-controls="panel-ipek" data-name="ipek">Ipek</button>
+          <button role="tab" id="tab-ipek-naz" aria-controls="panel-ipek-naz" data-name="ipek-naz">Ipek Naz</button>
+          <button role="tab" id="tab-naz" aria-controls="panel-naz" data-name="naz">Naz</button>
+        </div>
+        <p class="name-hint">
+          People call me three different names. I like building models of the mind to understand
+          how we think, learn, and make decisions. Click a name to hear that part of the story.
         </p>
-        <p>
-          I'm currently a predoctoral researcher and lab manager at Boston University’s
-          <strong>Computation, Learning, and Development Lab</strong>. I recently graduated
-          from the University of Pennsylvania, where I studied Cognitive Science with a
-          concentration in Computation and Cognition and completed minors in Data Science
-          and Computational Neuroscience.
-        </p>
+      </div>
 
+      <section id="panel-ipek" class="name-panel" role="tabpanel" aria-labelledby="tab-ipek" data-name="ipek">
+        <p class="panel-label">Ipek <span>/ the short version</span></p>
+        <p class="lead">I'm interested in building models of thinking.</p>
         <p>
-          I am broadly interested in how people learn from experience, make decisions, and
-          form judgments, as well as how these processes can be formalized through
-          computational models of the mind. I am especially interested in learning progress,
-          exploration, curiosity, value-guided learning, and the relationship between human
-          learning and artificial intelligence.
+          I study how people learn from experience, make decisions, and form judgments, and how
+          those processes can be written down as computational models of the mind. The questions
+          I keep coming back to are about learning progress, exploration, curiosity, value-guided
+          learning, and what human learning and artificial intelligence can teach each other.
         </p>
+      </section>
 
+      <section id="panel-ipek-naz" class="name-panel" role="tabpanel" aria-labelledby="tab-ipek-naz" data-name="ipek-naz">
+        <p class="panel-label">Ipek Naz <span>/ what I'm doing now</span></p>
         <p>
-          Previously, I worked with
-          <strong>Alison Gopnik</strong> and <strong>Annya Dahmani</strong> at the
-          Cognitive Development and Learning Lab at UC Berkeley. There, I studied how
-          children and adults evaluate their own learning progress and decide what to explore
-          next. My senior honors thesis compared human judgments about learning progress with
-          computational learning models and examined how goals shape exploration.
-          You can watch my
+          I'm a predoctoral researcher and lab manager at the
+          <a href="https://bucoldlab.org/" target="_blank" rel="noopener noreferrer">Computation, Learning,
+            and Development Lab</a>, where I build tasks that you can try yourself.
+        </p>
+        <p>
+          In the
+          <a class="demo-link" href="fishing-task-demo/" target="_blank" rel="noopener noreferrer">Submarine
+            Fishing Task</a>,
+          people choose among sea creatures whose values keep changing, which lets us study how
+          people track and search for value under uncertainty in high- and low-volatility
+          environments. The task is taken from Holton et al. (2024), and this project is a
+          collaboration with <strong>Eleanor Holton</strong>.
+        </p>
+        <p>
+          In the
+          <a class="demo-link" href="websurf-demo/" target="_blank" rel="noopener noreferrer">Web-Surf
+            Task</a>,
+          people decide whether to wait for content to load or cut their losses and move on,
+          which lets us study how time already invested shapes the decision to persist or abandon.
+        </p>
+        <p>
+          There's more on these, plus a learning progress study in the works, on my
+          <a href="research.html">research page</a>.
+        </p>
+      </section>
+
+      <section id="panel-naz" class="name-panel" role="tabpanel" aria-labelledby="tab-naz" data-name="naz">
+        <p class="panel-label">Naz <span>/ where I came from</span></p>
+        <p>
+          I studied Computation and Cognition, Data Science, and Computational Neuroscience
+          at UPenn, where I was also a MindCORE Scholar.
+        </p>
+        <p>
+          I worked with <strong>Alison Gopnik</strong> and <strong>Annya Dahmani</strong> at the
+          Cognitive Development and Learning Lab at UC Berkeley, studying how children and adults
+          evaluate their own learning progress and decide what to explore next. My senior honors
+          thesis, co-advised by <strong>Sharon Thompson-Schill</strong>, compared human judgments about learning progress with artificial learning models
+          and examined how goals shape exploration. You can watch my
           <a href="https://drive.google.com/file/d/1djJ0Nvke9EetUGytxKk1bXHeb_eAojES/view" target="_blank"
-            rel="noopener noreferrer">
-            senior thesis presentation
-          </a>.
-        </p>
-
-        <p>
-          I also worked at Penn’s Center for Neuroengineering and Therapeutics, where I used
-          neuroimaging and computational tools to study the relationship between traumatic
-          brain injury lesions and epilepsy.
+            rel="noopener noreferrer">senior thesis presentation</a>.
         </p>
       </section>
 
-      <section id="research" class="section-block">
-        <h2>Research</h2>
-
-        <div class="project-card">
-          <div>
-            <p class="project-label">Interactive Demo</p>
-            <h3>Submarine Fishing Task</h3>
-            <p>
-              A value-based foraging task: on each trial, people choose among creatures
-              worth different (and changing) amounts, studying how people track and
-              search for value under uncertainty across high- and low-volatility
-              conditions.
-            </p>
-          </div>
-          <a class="project-link" href="fishing-task-demo/" target="_blank" rel="noopener noreferrer">
-            Try a short demo ↗
-          </a>
-        </div>
-
-        <div class="project-card">
-          <div>
-            <p class="project-label">Interactive Demo</p>
-            <h3>Web-Surf Task</h3>
-            <p>
-              A sunk-cost decision-making task: people decide whether to wait for
-              content to load or cut their losses and move on, studying how prior time
-              investment shapes the decision to persist versus abandon.
-            </p>
-          </div>
-          <a class="project-link" href="websurf-demo/" target="_blank" rel="noopener noreferrer">
-            Try a short demo ↗
-          </a>
-        </div>
-      </section>
+      <p class="sign-off">
+        Here's my <a href="Ipek_Obek_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>, and please
+        <a href="mailto:ipeknazobek@gmail.com">reach out</a> if you'd like to talk!
+      </p>
+    </section>
 
   </main>
 
@@ -150,6 +149,36 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Name tabs: without JS all three panels simply show stacked.
+    const tabs = document.querySelectorAll(".name-tabs button");
+    const panels = document.querySelectorAll(".name-panel");
+    document.body.classList.add("has-tabs");
+
+    function showName(name) {
+      // No name picked yet: only the three names show.
+      if (!document.getElementById("panel-" + name)) name = "";
+      if (name) document.body.dataset.name = name;
+      else delete document.body.dataset.name;
+      tabs.forEach((t) => t.setAttribute("aria-selected", t.dataset.name === name));
+      panels.forEach((p) => (p.hidden = p.dataset.name !== name));
+    }
+
+    tabs.forEach((t) =>
+      t.addEventListener("click", () => {
+        // Clicking the open name again closes it.
+        const name = t.getAttribute("aria-selected") === "true" ? "" : t.dataset.name;
+        history.replaceState(null, "", name ? "#" + name : location.pathname);
+        showName(name);
+      })
+    );
+    // Panel ids are prefixed so #name links switch tabs without the browser scrolling past the picker.
+    function showFromHash() {
+      showName(location.hash.slice(1));
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", showFromHash);
+    showName(location.hash.slice(1));
   </script>
 </body>
 
