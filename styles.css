@@ -120,9 +120,8 @@ nav a {
   font-weight: 700;
 }
 
-.profile-column .profile-name {
+.profile-column h1 {
   margin: 0 0 8px;
-  font-weight: 700;
   font-size: 1.45rem;
   letter-spacing: -0.02em;
 }
@@ -163,35 +162,8 @@ nav a {
   max-width: 970px;
 }
 
-.intro {
-  margin-bottom: 44px;
-  padding-bottom: 36px;
-  border-bottom: 1px solid var(--border);
-}
-
-.intro .headline {
-  margin: 0 0 18px;
-  font-size: clamp(2.2rem, 6vw, 4rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-}
-
-.intro p {
-  margin: 0 0 18px;
-  font-size: 1.23rem;
-  line-height: 1.6;
-  letter-spacing: -0.015em;
-}
-
-.intro .intro-lead {
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
 .name-picker {
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .hello {
@@ -214,9 +186,9 @@ nav a {
   background: none;
   color: var(--border);
   font: inherit;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-size: clamp(2.2rem, 6vw, 4rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   line-height: 1.1;
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
@@ -247,7 +219,7 @@ body:not([data-name]) .name-tabs button:hover {
 }
 
 .name-hint {
-  margin: 0 0 10px;
+  margin: 18px 0 0;
   color: var(--muted);
 }
 
@@ -515,18 +487,11 @@ footer {
     margin-bottom: 20px;
   }
 
-  /* The headline already shows the name on phones. */
-  .profile-column .profile-name {
-    display: none;
-  }
-
-  .name-panel p,
-  .intro p {
+  .name-panel p {
     font-size: 1.05rem;
   }
 
-  .name-panel .lead,
-  .intro .intro-lead {
+  .name-panel .lead {
     font-size: 1.3rem;
   }
 
