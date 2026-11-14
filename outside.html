@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ipek Naz Obek — mentoring, outreach, and talks outside the lab." />
+  <title>Outside the Lab · Ipek Naz Obek</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="site-title" href="index.html">
+        Ipek Naz Obek
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="research.html">Research</a>
+        <a href="outside.html" aria-current="page">Outside the Lab</a>
+        <a href="Ipek_Obek_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="research-shell">
+    <h1>Outside the Lab</h1>
+    <p class="research-intro">
+      Some of the things I care about beyond my research: mentoring, science outreach, and helping
+      more students find their way into research.
+    </p>
+
+    <article class="project" id="yga">
+      <h2>Young Guru Academy</h2>
+      <p class="collab">Alumni Mentor, 2019–present</p>
+      <div class="project-text">
+        <p>
+          Since 2019, I have mentored Turkish high school and university students pursuing
+          international education and STEM careers through Young Guru Academy (YGA). I also led
+          STEM outreach across more than five cities in rural Anatolia, training teachers and
+          students and bringing hands-on science education to underserved communities.
+        </p>
+        <p>
+          I shared this work in a talk at YGA's annual summit, which reaches around 20,000 attendees.
+        </p>
+        <a class="demo-button" href="https://www.youtube.com/watch?v=uk8sU6mh6_0" target="_blank" rel="noopener noreferrer">Watch my
+          YGA talk ▶</a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Ipek Naz Obek</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
