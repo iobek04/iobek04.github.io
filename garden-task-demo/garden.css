@@ -1,0 +1,159 @@
+/* Garden task styles (participant-facing, single light look). */
+:root{
+  --bg:#EBF0E3; --surface:#FFFFFF; --ink:#1D2A1B; --ink-2:#56644F; --line:#D3DCC6;
+  --leaf:#2E6A38; --focus:#1C5FD0;
+  --hedge:#2D5A2E; --hedge-2:#3C7440; --soil:#6B4E33; --stage:#DCE8CF; --stage-2:#CBDDB9;
+  --bush:#5C9A4B; --bush-hi:#83BC67; --bush-lo:#3C7836;
+}
+html, body{background:var(--bg); color:var(--ink)}
+.jspsych-display-element{font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif; font-size:18px}
+.jspsych-content{max-width:980px; width:100%}
+.jspsych-content-wrapper{padding:16px}
+
+.gt-stage{background:var(--stage); border-radius:18px; overflow:hidden; width:min(96vw,680px); margin:0 auto; text-align:left}
+.gt-hedgebar{position:relative; padding:14px 12px 0; background:linear-gradient(var(--stage) 0 62%, var(--hedge) 62% 100%)}
+.gt-hedgebar::after{content:""; position:absolute; left:0; right:0; bottom:0; height:38%;
+  background:radial-gradient(circle at 10px 6px, var(--hedge-2) 9px, transparent 10px) 0 0/22px 14px repeat-x, var(--hedge)}
+.gt-puppets{display:flex; justify-content:center; gap:clamp(8px,4vw,40px); position:relative; z-index:1}
+.gt-pup{appearance:none; border:0; background:transparent; padding:4px 6px 8px; cursor:pointer; display:flex; flex-direction:column; align-items:center; border-radius:14px; font:inherit; color:var(--ink)}
+.gt-pup .gt-puppet{width:clamp(58px,11vw,86px); height:auto; display:block; transition:transform .18s ease}
+.gt-nm{font-weight:700; font-size:15px; background:var(--surface); padding:0 10px; border-radius:999px; margin-top:-6px; position:relative; z-index:2}
+.gt-pup:hover .gt-puppet{transform:translateY(-4px)}
+.gt-pup.active .gt-puppet{transform:translateY(-8px) scale(1.06)}
+.gt-pup.active .gt-nm{background:var(--leaf); color:#fff}
+.gt-pup.waiting{opacity:.4; cursor:default}
+.gt-pup.waiting:hover .gt-puppet{transform:none}
+.gt-status{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 16px; padding:10px 16px; background:var(--stage-2); font-size:16px; font-weight:600}
+.gt-score{font-variant-numeric:tabular-nums}
+.gt-gardenwrap{padding:14px 14px 18px; display:flex; justify-content:center}
+.gt-garden{position:relative; width:min(100%,560px); aspect-ratio:1; display:grid; grid-template-columns:repeat(8,1fr); /* the plugin sets the real column count from GRID */ gap:4px; padding:7px; border-radius:14px; background:var(--soil)}
+/* Each puppet's garden has bushes in the puppet's color (set by the gt-g-<puppet> class) */
+.gt-g-sprout{--bush:#5C9A4B; --bush-hi:#83BC67; --bush-lo:#3C7836}
+.gt-g-drizzle{--bush:#3F74C4; --bush-hi:#74A1E0; --bush-lo:#2A559C}
+.gt-g-poppy{--bush:#C9483A; --bush-hi:#E87A6A; --bush-lo:#9C3127}
+.gt-g-pebble{--bush:#858B92; --bush-hi:#AEB3B9; --bush-lo:#666C73}
+.gt-bush{appearance:none; border:0; padding:0; cursor:pointer; border-radius:40% 40% 34% 34%; position:relative; font:inherit;
+  background:radial-gradient(circle at 30% 30%, var(--bush-hi) 0 22%, transparent 23%),
+             radial-gradient(circle at 70% 38%, var(--bush-hi) 0 18%, transparent 19%),
+             radial-gradient(circle at 50% 70%, var(--bush-lo) 0 30%, transparent 31%), var(--bush);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.18); transition:transform .1s}
+.gt-bush:hover{transform:scale(1.06)}
+.gt-bush:focus-visible{outline:3px solid var(--focus); outline-offset:1px; z-index:2}
+.gt-bush.rev{border-radius:10px; cursor:default}
+.gt-bush.rev:hover{transform:none}
+/* Point colors, 0 (pale) to 7 (darkest = the puppet's hiding spot) */
+.gt-bush.p0{background:#EEF0DC; color:#3A2A10} .gt-bush.p1{background:#F7E7A9; color:#3A2A10}
+.gt-bush.p2{background:#F4D06A; color:#3A2A10} .gt-bush.p3{background:#EDB23F; color:#3A2A10}
+.gt-bush.p4{background:#E28D2C; color:#3A2A10} .gt-bush.p5{background:#CD6524; color:#fff}
+.gt-bush.p6{background:#A8441C; color:#fff}    .gt-bush.p7{background:#7A2A12; color:#fff}
+.gt-bush.p10{background:#5C1D0C; color:#fff}  /* the puppet's bush */
+.gt-v{font-weight:800; font-size:clamp(12px,2.7vw,19px); line-height:1}
+.gt-bush.just{animation:gtpop .32s ease}
+.gt-fl{position:absolute; left:50%; top:10%; transform:translateX(-50%); font-weight:800; color:var(--ink); pointer-events:none; animation:gtfloat .8s ease forwards; font-size:15px}
+.gt-truth{position:absolute; right:3px; bottom:1px; font-family:ui-monospace,Menlo,monospace; font-size:10px; color:#fff; background:rgba(0,0,0,.45); border-radius:4px; padding:0 3px; line-height:14px}
+.gt-garden.locked .gt-bush{cursor:default}
+/* The bush where the puppet was hiding: the puppet with its points as a badge */
+.gt-bush.found, .gt-bush.found:hover{transform:scale(1.5); z-index:2; animation:none; box-shadow:0 0 0 3px #fff, 0 3px 8px rgba(0,0,0,.4)}
+.gt-bush.found .gt-puppet{position:absolute; left:8%; top:2%; width:84%; height:84%}
+.gt-bush.found .gt-v{position:absolute; right:-4px; bottom:-4px; min-width:1.35em; padding:2px 3px; border-radius:999px; background:#fff; color:#7A2A12; font-size:clamp(11px,2.2vw,15px); box-shadow:0 1px 3px rgba(0,0,0,.4)}
+@keyframes gtpop{0%{transform:scale(.7)}70%{transform:scale(1.1)}100%{transform:scale(1)}}
+@keyframes gtfloat{0%{opacity:0; transform:translate(-50%,6px)}25%{opacity:1}100%{opacity:0; transform:translate(-50%,-26px)}}
+.gt-hide, .gt-prompt{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:rgba(20,35,18,.35); border-radius:14px; z-index:3; text-align:center}
+.gt-hide button{appearance:none; border:0; background:transparent; cursor:pointer; padding:0}
+.gt-hide .gt-puppet{width:clamp(90px,24vw,140px); height:auto; animation:gtbob 1.6s ease-in-out infinite}
+/* The puppet is exactly in the centre of the garden, so every garden starts with a click there */
+.gt-hide .gt-say{position:absolute; left:50%; top:50%; transform:translate(-50%, clamp(56px,15vw,88px)); white-space:nowrap}
+.gt-hide.go .gt-puppet{animation:gtdive .45s ease-in forwards}
+.gt-say, .gt-prompt{font-weight:700; font-size:18px; color:#fff}
+.gt-say{background:rgba(0,0,0,.45); padding:2px 14px; border-radius:999px}
+.gt-prompt{font-size:20px; padding:20px}
+@keyframes gtbob{50%{transform:translateY(-6px)}}
+.gt-found{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:rgba(20,35,18,.55); border-radius:14px; z-index:4; text-align:center; padding:16px; animation:gtfade .25s ease}
+.gt-found .gt-puppet{width:clamp(90px,24vw,140px); height:auto; animation:gtjump .6s ease 2}
+.gt-found-msg{font-weight:800; font-size:clamp(22px,4.5vw,32px); color:#fff; background:rgba(0,0,0,.35); padding:4px 18px; border-radius:14px}
+@keyframes gtfade{from{opacity:0}to{opacity:1}}
+@keyframes gtjump{40%{transform:translateY(-18px)}}
+@keyframes gtdive{to{transform:translateY(60px) scale(.2); opacity:0}}
+
+.gt-card{position:relative; background:var(--stage); border-radius:18px; padding:26px clamp(16px,4vw,38px) 30px; display:flex; flex-direction:column; gap:14px; align-items:flex-start; text-align:left; width:min(96vw,900px); margin:0 auto}
+.gt-card h2{font-weight:800; font-size:clamp(24px,4vw,32px); line-height:1.1; margin:0}
+.gt-card p{font-size:18px; line-height:1.45; margin:0; max-width:40em}
+.gt-cardpups{display:flex; gap:18px; flex-wrap:wrap}
+.gt-cardpups .gt-puppet{width:74px; height:auto}
+/* Small row of example bushes on the instruction screens */
+.gt-demo{display:flex; gap:6px; padding:10px; border-radius:14px; background:var(--soil)}
+.gt-demo .gt-bush{width:56px; height:56px; display:flex; align-items:center; justify-content:center; cursor:default}
+.gt-demo .gt-bush:hover{transform:none}
+.gt-demo .gt-bush.found, .gt-demo .gt-bush.found:hover{transform:scale(1.2)}
+.gt-demo .gt-bush.glow{cursor:pointer; box-shadow:0 0 0 3px #FFE27A, 0 0 16px 6px rgba(255,214,77,.85); animation:gtglow 1.1s ease-in-out infinite alternate}
+.gt-demo .gt-bush.glow:focus-visible{outline:3px solid var(--focus); outline-offset:3px}
+@keyframes gtglow{from{box-shadow:0 0 0 2px #FFE27A, 0 0 8px 2px rgba(255,214,77,.6)}to{box-shadow:0 0 0 4px #FFE27A, 0 0 20px 8px rgba(255,214,77,.95)}}
+/* Comprehension question answers */
+.jspsych-html-button-response-btngroup:has(.gt-choicebtn){flex-direction:column; align-items:center}
+.gt-choicebtn{appearance:none; border:3px solid transparent; background:var(--surface); border-radius:14px; padding:10px 18px; cursor:pointer; font-family:inherit; font-weight:700; font-size:18px; color:var(--ink); width:min(90vw,560px); text-align:left}
+.gt-choicebtn:hover{border-color:var(--leaf)}
+.gt-choicebtn:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+.gt-letter{display:inline-block; width:1.6em; color:var(--leaf)}
+.gt-tryagain{color:#A8441C}
+.gt-right{color:var(--leaf)}
+.gt-choicebtn:disabled, .gt-favbtn:disabled{opacity:.45; cursor:not-allowed}
+.gt-choicebtn:disabled:hover, .gt-favbtn:disabled:hover{border-color:transparent}
+/* Practice popup after the puppet hides */
+.gt-tip{background:rgba(20,35,18,.45)}
+/* Sound check */
+.gt-help{background:var(--surface); border-radius:12px; padding:10px 14px}
+.gt-linkbtn{appearance:none; border:0; background:none; padding:0; font:inherit; font-size:16px; color:var(--ink-2); text-decoration:underline; cursor:pointer}
+/* Shown when the participant leaves full screen */
+.gt-fswarn{position:fixed; inset:0; z-index:99999; background:rgba(29,42,27,.75); display:flex; align-items:center; justify-content:center; padding:16px; font-family:"Baloo 2","Trebuchet MS",system-ui,sans-serif}
+.gt-fswarn .gt-card{width:min(92vw,560px)}
+.gt-fswarn[hidden]{display:none}
+.gt-textarea{width:100%; box-sizing:border-box; font:inherit; font-size:18px; padding:10px 12px; border:2px solid var(--line); border-radius:12px; background:var(--surface); color:var(--ink); resize:vertical}
+.gt-textarea:focus{outline:3px solid var(--focus); outline-offset:1px}
+.gt-staff{margin-top:14px; padding:12px clamp(16px,4vw,38px); background:transparent}
+.gt-staff summary{cursor:pointer}
+.gt-row{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.gt-small{font-family:system-ui,sans-serif; font-size:13px; color:var(--ink-2)}
+.gt-btn{appearance:none; border:0; cursor:pointer; font-family:inherit; font-weight:700; font-size:18px; padding:8px 22px; border-radius:999px; background:var(--leaf); color:#fff; box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.gt-btn:disabled{opacity:.45; cursor:not-allowed}
+.gt-btn.ghost{background:var(--surface); color:var(--ink)}
+.gt-btn:focus-visible, .gt-favbtn:focus-visible, .gt-facebtn:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+.jspsych-html-button-response-btngroup{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:12px}
+
+.gt-predgrid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; width:100%}
+@media (max-width:640px){ .gt-predgrid{grid-template-columns:minmax(0,1fr)} }
+.gt-predcard{background:var(--surface); border-radius:14px; padding:10px 12px 12px; display:flex; flex-direction:column; gap:6px}
+.gt-predhd{display:flex; align-items:center; gap:8px; font-weight:700; font-size:18px}
+.gt-predhd .gt-puppet{width:40px; height:auto}
+.gt-predone{width:100%; max-width:560px; gap:10px; padding:14px 16px 16px}
+.gt-predone .gt-predhd{font-size:22px}
+.gt-predone .gt-predhd .gt-puppet{width:64px}
+.gt-predone .gt-score-btn{min-height:42px; font-size:18px}
+.gt-predrow{display:flex; flex-direction:column; gap:4px}
+.gt-predlbl{font-weight:700; font-size:15px}
+.gt-scores{display:grid; grid-template-columns:repeat(7,1fr); gap:4px}
+.gt-score-btn{appearance:none; border:2px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:4px 0; font-family:inherit; font-weight:700; font-size:16px; cursor:pointer; min-height:34px}
+.gt-score-btn:hover{border-color:var(--leaf)}
+.gt-score-btn.sel{background:var(--leaf); border-color:var(--leaf); color:#fff}
+.gt-score-btn:focus-visible{outline:3px solid var(--focus); outline-offset:1px}
+
+.gt-favbtn{appearance:none; border:3px solid transparent; background:var(--surface); border-radius:16px; padding:8px 14px 6px; cursor:pointer; display:flex; flex-direction:column; align-items:center; font-family:inherit; font-weight:700; font-size:16px; color:var(--ink)}
+.gt-favbtn .gt-puppet{width:84px; height:auto}
+.gt-favbtn:hover{border-color:var(--leaf)}
+
+.gt-affect{display:flex; flex-direction:column; gap:10px; width:100%}
+.gt-affrow{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; background:var(--surface); border-radius:14px; padding:8px 12px}
+.gt-faces{display:flex; gap:6px}
+.gt-facebtn{appearance:none; border:3px solid transparent; background:transparent; border-radius:50%; padding:2px; cursor:pointer}
+.gt-facebtn .gt-face{width:clamp(40px,8vw,56px); height:auto; display:block}
+.gt-facebtn.sel{border-color:var(--leaf)}
+/* Replay-narration button, top right of a card */
+.gt-replay{position:absolute; top:12px; right:12px; appearance:none; border:0; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--surface); color:var(--leaf); cursor:pointer; box-shadow:0 2px 0 rgba(0,0,0,.15)}
+.gt-replay:hover, .gt-replay.gt-vhover{filter:brightness(.95)}
+.gt-replay:focus-visible{outline:3px solid var(--focus); outline-offset:2px}
+/* Drawn pointer used while the real pointer is locked (see GardenCore.cursor) */
+.gt-vcursor{position:fixed; left:0; top:0; z-index:100000; pointer-events:none; will-change:transform}
+.gt-vcursor svg{display:block; filter:drop-shadow(0 1px 1px rgba(0,0,0,.35))}
+.gt-bush.gt-vhover:not(.rev){transform:scale(1.06)}
+.gt-pup.gt-vhover:not(.waiting) .gt-puppet{transform:translateY(-4px)}
+.gt-btn.gt-vhover, .gt-favbtn.gt-vhover{filter:brightness(1.08)}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
